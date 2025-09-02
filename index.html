@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laundry Services Web App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">LOGO</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+      <button class="user-name">Username</button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-left">
+      <h1>Revitalize Your Clothes with Expart</h1>
+      <h2>Laundry Services!</h2>
+      <p>From premium dry cleaning to swift wash and fold, we deliver care and convenience. Schedule a pickup and
+        rediscover the freshness of your clothes today!</p>
+      <button id="book-service-btn">Book a Service Today</button>
+    </div>
+    <div class="hero-right">
+      <img src="https://i.pinimg.com/736x/34/84/27/348427bf43beef4d1c02cb579183dd6d.jpg" alt="Laundry Service">
+    </div>
+  </section>
+
+  <!-- Service Overview -->
+  <section class="overview">
+    <h1>Our Achivements</h1>
+    <div class="achievement">15+<br>
+      <p>Laundry Services</p>
+    </div>
+    <div class="achievement">240+<br>
+      <p>Happy Customers</p>
+    </div>
+    <div class="achievement">2+Yrs<br>
+      <p>Years of Experience</p>
+    </div>
+  </section>
+
+  <!-- Booking Services Section -->
+  <section class="booking">
+    <!--  Left: Services -->
+    <div class="booking-left">
+      <h2>Our Services</h2>
+      <p>Click On The Add To Cart Button To Add The Services To Your Cart</p>
+      <ul class="service-list">
+        <li>
+          <span>Dry Cleaning - ₹200.00</span>
+          <div>
+            <button class="remove-btn">Remove Item</button>
+            <button class="add-btn">Add Item</button>
+          </div>
+        </li>
+        <li>
+          <span>Wash & Fold - ₹100.00</span>
+          <div>
+            <button class="remove-btn">Remove Item</button>
+            <button class="add-btn">Add Item</button>
+          </div>
+        </li>
+        <li>
+          <span>Ironing - ₹30.00</span>
+          <div>
+            <button class="remove-btn">Remove Item</button>
+            <button class="add-btn">Add Item</button>
+          </div>
+        </li>
+        <li>
+          <span>Stain Removal - ₹500.00</span>
+          <div>
+            <button class="remove-btn">Remove Item</button>
+            <button class="add-btn">Add Item</button>
+          </div>
+        </li>
+        <li>
+          <span>Leather & Suede Cleaning - ₹999.00</span>
+          <div>
+            <button class="remove-btn">Remove Item</button>
+            <button class="add-btn">Add Item</button>
+          </div>
+        </li>
+        <li>
+          <span>Wedding Dress Cleaning - ₹2800.00</span>
+          <div>
+            <button class="remove-btn">Remove Item</button>
+            <button class="add-btn">Add Item</button>
+          </div>
+        </li>
+      </ul>
+      <p class="info"> Add the items to the cart and book now</p>
+    </div>
+
+    <!-- Right: Cart + Booking Form -->
+    <div class="booking-right">
+      <!-- Cart -->
+      <div class="cart">
+        <h3>Added Items</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Service Name</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody id="cart-items">
+            <!-- Dynamic rows here -->
+          </tbody>
+        </table>
+        <div class="total">
+          <strong>Total Amount:</strong> ₹<span id="total-amount">0</span>
+        </div>
+      </div>
+
+      <!-- Booking Form -->
+      <div class="booking-form">
+        <h3>Book Now</h3>
+        <form id="book-form">
+          <input type="text" name="fullName" placeholder="Full Name" required />
+          <div class="form-row">
+            <input type="email" name="email" placeholder="Email ID" required />
+            <input type="tel" name="phone" placeholder="Phone Number" required />
+          </div>
+          <button type="submit">Book now</button>
+        </form>
+        <p id="confirmation-message"></p>
+      </div>
+    </div>
+  </section>
+
+
+  <!--  Quality Description -->
+  <section class="quality">
+    <h2>Why Choose Us?</h2>
+    <ul>
+      <li>✔ Premium Laundry Services</li>
+      <li>✔ Quick Support</li>
+      <li>✔ Timely Delivery</li>
+      <li>✔ Affordable Prices</li>
+    </ul>
+  </section>
+
+  <!--  Newsletter -->
+  <section class="newsletter">
+    <h2>Subscribe to Our Newsletter</h2>
+    <form id="newsletter-form">
+      <input type="text" name="subscriberName" placeholder="Full Name" required>
+      <input type="email" name="subscriberEmail" placeholder="Email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <!--  Footer -->
+  <footer>
+    <div class="footer-logo">LaundryPro</div>
+    <div class="footer-links">
+      <a href="#about">About Us</a>
+      <a href="#">FAQs</a>
+      <a href="#">Terms of Service</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+    <div class="socials">
+      <a href="#">FB</a>
+      <a href="#">IG</a>
+      <a href="#">TW</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
