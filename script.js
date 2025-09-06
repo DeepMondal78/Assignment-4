@@ -1,107 +1,85 @@
-// Smooth Scroll Hero Button
-document.getElementById("book-service-btn").addEventListener("click", function () {
-  document.getElementById("services").scrollIntoView({ behavior: "smooth" });
+// Smooth scroll to services
+document.getElementById('book-service-btn').addEventListener('click', function () {
+  document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
 });
 
-// Cart Functionality
-const cartItems = document.getElementById("cart-items");
-const totalAmount = document.getElementById("total-amount");
+// Cart logic
+const cartItemsTbody = document.getElementById('cart-items');
+const totalAmountEl = document.getElementById('total-amount');
+const addButtons = document.querySelectorAll('.add-btn');
 
 let cart = [];
-let total = 0;
 
-// All service buttons
-const serviceItems = document.querySelectorAll(".service-list li");
-
-serviceItems.forEach((item) => {
-  const addBtn = item.querySelector(".add-btn");
-  const removeBtn = item.querySelector(".remove-btn");
-  const serviceName = item.querySelector("span").innerText;
-
-  // Price extract from text → last word (e.g. "$10")
-  const price = parseInt(serviceName.split("$")[1]);
-
-  // Add Item
-  addBtn.addEventListener("click", () => {
-    cart.push({ name: serviceName, price: price });
-    updateCart();
-  });
-
-  // Remove Item (remove first matching)
-  removeBtn.addEventListener("click", () => {
-    const index = cart.findIndex((service) => service.name === serviceName);
-    if (index !== -1) {
-      cart.splice(index, 1);
-      updateCart();
-    }
-  });
-});
-
-// Update Cart Display
-function updateCart() {
-  cartItems.innerHTML = "";
-  total = 0;
-
-  cart.forEach((item) => {
-    const li = document.createElement("li");
-    li.innerText = `${item.name}`;
-    cartItems.appendChild(li);
-    total += item.price;
-  });
-
-  totalAmount.innerText = total;
+function formatPrice(n) {
+  return parseFloat(n).toFixed(2);
 }
 
-// Booking Form + Email.js
-const bookForm = document.getElementById("book-form");
-const confirmationMsg = document.getElementById("confirmation-message");
+function renderCart() {
+  cartItemsTbody.innerHTML = '';
+  if (cart.length === 0) {
+    const tr = document.createElement('tr');
+    tr.className = 'empty';
+    tr.innerHTML = '<td colspan="4" style="padding:24px;color:#999;text-align:center">No Items Added — add to items the cart form the services bar</td>';
+    cartItemsTbody.appendChild(tr);
+    totalAmountEl.innerText = '0';
+    return;
+  }
+  let total = 0;
+  cart.forEach((it, idx) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${idx + 1}</td><td style="text-align:left;padding-left:8px">${it.name}</td><td>₹${formatPrice(it.price)}</td><td><button data-idx="${idx}" class="remove-from-cart" style="padding:6px 8px;border-radius:6px;border:none;cursor:pointer">Remove</button></td>`;
+    cartItemsTbody.appendChild(tr);
+    total += it.price;
+  });
+  totalAmountEl.innerText = formatPrice(total);
 
-bookForm.addEventListener("submit", function (e) {
-  e.preventDefault();
+  // attach remove handlers
+  document.querySelectorAll('.remove-from-cart').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const idx = parseInt(this.dataset.idx, 10);
+      cart.splice(idx, 1);
+      renderCart();
+    });
+  });
+}
 
-  // Collect user input
-  const formData = {
-    fullName: bookForm.fullName.value,
-    email: bookForm.email.value,
-    phone: bookForm.phone.value,
-    services: cart.map((c) => c.name).join(", "),
-    total: total,
-  };
-
-  // --- EmailJS Integration ---
-  // Replace with your EmailJS keys:
-  //   service_id, template_id, public_key
-  emailjs
-    .send("your_service_id", "your_template_id", formData, "your_public_key")
-    .then(
-      function () {
-        confirmationMsg.innerText =
-          "✅ Thank you for booking! We will get back to you soon.";
-        confirmationMsg.style.color = "green";
-        bookForm.reset();
-        cart = [];
-        updateCart();
-      },
-      function (error) {
-        confirmationMsg.innerText = "❌ Failed to send email. Try again.";
-        confirmationMsg.style.color = "red";
-        console.error("EmailJS error:", error);
-      }
-    );
+addButtons.forEach(btn => {
+  btn.addEventListener('click', function () {
+    const li = this.closest('li');
+    const name = li.querySelector('.name').innerText.trim();
+    const price = parseFloat(li.dataset.price) || 0;
+    cart.push({ name, price });
+    renderCart();
+  });
 });
 
-
-const newsletterForm = document.getElementById("newsletter-form");
-
-newsletterForm.addEventListener("submit", function (e) {
+// Booking form
+const bookForm = document.getElementById('book-form');
+const confirmation = document.getElementById('confirmation-message');
+bookForm.addEventListener('submit', function (e) {
   e.preventDefault();
-
-  const name = newsletterForm.subscriberName.value;
-  const email = newsletterForm.subscriberEmail.value;
-
-  alert(`✅ Thank you, ${name}! You've subscribed with ${email}.`);
-
-  newsletterForm.reset();
+  if (cart.length === 0) {
+    confirmation.style.color = 'red';
+    confirmation.innerText = 'Please add at least one service to cart before booking.';
+    return;
+  }
+  // simulate booking
+  confirmation.style.color = 'green';
+  confirmation.innerText = '✅ Thank you for booking! We will get back to you soon.';
+  bookForm.reset();
+  cart = [];
+  renderCart();
 });
 
+// Newsletter
+document.getElementById('news-btn').addEventListener('click', function () {
+  const n = document.getElementById('news-name').value.trim();
+  const e = document.getElementById('news-email').value.trim();
+  if (!n || !e) { alert('Please fill both fields'); return }
+  alert(`✅ Thank you, ${n}! You've subscribed with ${e}.`);
+  document.getElementById('news-name').value = '';
+  document.getElementById('news-email').value = '';
+});
 
+// initial render
+renderCart();
