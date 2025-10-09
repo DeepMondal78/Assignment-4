@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laundry Services Web App</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="shortcut icon"
+        href="https://png.pngtree.com/png-clipart/20230923/original/pngtree-laundry-logo-vector-dry-water-icon-vector-png-image_12530252.png"
+        type="image/x-icon">
+</head>
+
+<body>
+    <main>
+        <!-- hearder section start here -->
+        <header>
+            <nav class="container">
+                <div class="logo">
+                    <h1>logo</h1>
+                </div>
+                <div class="nav-center">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">serives</a></li>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">contact us</a></li>
+                    </ul>
+                </div>
+                <div class="nav-right flex items-center gap-5">
+                    <button class="btn">
+                        user name
+                    </button>
+                    <i id="toggle-btn" class="ri-menu-2-fill"></i>
+                </div>
+            </nav>
+        </header>
+        <!-- hearder section end here -->
+
+        <!-- hero  section start here -->
+        <section class="hero-section container">
+            <div class="hero-left-part">
+                <h1 class="heading">
+                    revitalize your clothes with expert <span class="heading-span-text">
+                        laundry sevices!
+                    </span>
+                </h1>
+                <p class="description">
+                    form a preminm dry cleaning to swift ah and fold, we deliver care and convenience. Schedule a
+                    pickuup
+                    and rediscover the freshness of your colthes todady!
+                </p>
+                <div class="mt-5">
+                    <a href="#serives" class="book-btn">
+                        BOOK a Serives Today
+                    </a>
+                </div>
+            </div>
+            <div class="hero-right-part">
+                <img class="hero-img" src="https://laundry-wallah-assignment.vercel.app/washing-machine.webp"
+                    alt="washing-machine">
+            </div>
+        </section>
+        <!-- hero  section end here -->
+        <!-- our achievements section start here -->
+        <section class="achievements-section">
+            <div class="container">
+                <div class="flex-box">
+                    <div>
+                        <h1 class="achievments-text">our achievements</h1>
+                    </div>
+                    <div class="serives-part">
+                        <h2>15+</h2>
+                        <p>laundry Services</p>
+                    </div>
+
+                    <div class="customer-part">
+                        <h2>240+</h2>
+                        <p>happy customer</p>
+                    </div>
+                    <div class="experience-part">
+                        <h2>2+ year</h2>
+                        <p>experience</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- our achievements section end here -->
+
+        <!-- our serives section start here -->
+        <section id="serives" class="serives-section">
+            <div class="container flex items-start  justify-center gap-5">
+                <div class="serives-card">
+                    <div class="serives-part">
+                        <h1>our serives</h1>
+                        <p>click on the add to cart button to add the services to your cart</p>
+                    </div>
+                    <div class="item-list">
+                    </div>
+                </div>
+                <div>
+                    <div class="card">
+                        <div class="add-item-container">
+                            <p>add item</p>
+                            <table>
+                                <tr>
+                                    <th>sl no</th>
+                                    <th>serives name</th>
+                                    <th>price</th>
+                                </tr>
+                                <tbody class="card-list">
+
+                                </tbody>
+                            </table>
+                            <div class="no-cart-items">
+                                <i class="ri-information-line"></i>
+                                <p> no items added</p>
+                                <span>add to items the cart form the serives bar</span>
+                            </div>
+                            <h2>total ammount :<span id="total-price">0</span> </h2>
+                        </div>
+                    </div>
+                    <div class="serives-form">
+                        <form id="book-form">
+                            <h2>book now</h2>
+                            <div class="input-box">
+                                <label for="">Full Name</label>
+                                <input type="text" name="name" id="username"
+                                    placeholder="Enter Your user name here">
+                                <span class="error" id="user-error-sms"></span>
+                            </div>
+                            <div class="flex gap-5">
+                                <div class="input-box">
+                                    <label for="">Email id</label>
+                                    <input type="email" name="email" id="email" placeholder="Enter Your email id here">
+                                    <span class="error" id="email-error-sms"></span>
+                                </div>
+                                <div class="input-box">
+                                    <label for="">Phone Number</label>
+                                    <input type="number" name="number" id="number" placeholder="Enter Your number here">
+                                    <span class="error" id="number-error-sms"></span>
+                                </div>
+                            </div>
+                            <button id="book-btn">book now</button>
+                            <p id="loading-sms">plase wait... sending....</p>
+                        </form>
+                        <p id="book-sms"></p>
+                        <p id="error-product"></p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- our serives section end here -->
+
+        <!-- quality description section start here -->
+        <section class="quality-description-section">
+            <div class="container">
+                <div class="flex items-center gap-5 justify-between">
+                    <div class="premium-services-part">
+                        <img src="./assets/img/quality-service.png" alt="">
+                        <h2>premium services</h2>
+                        <p>elevate your wardrobe with our meticulous dry cleaning, ensuring garments look and feel as
+                            aood as new</p>
+                    </div>
+
+                    <div class="quick-support">
+                        <img src="./assets/img/support.png" alt="">
+                        <h2>quick support</h2>
+                        <p>we're committed to providing prompt solutions to ensur your experience is smooth and
+                            worry-free</p>
+                    </div>
+                    <div class="delivery-part">
+                        <img src="./assets/img/express-delivery.png" alt="">
+                        <h2>hassle free delivery</h2>
+                        <p>enjoy seamless service with our convenient pickup and delivery options, tailored to your
+                            schedule.</p>
+                    </div>
+                    <div class="prices-part">
+                        <img src="./assets/img/best-price.png" alt="">
+                        <h2>affordable prices</h2>
+                        <p>experience exceptional care withour breaking tha bank our affordabele prices make laundry day
+                            stress-free</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- quality description section end here -->
+
+        <!-- newsletter-subscription-section start here -->
+        <section class="newsletter-subscription-section">
+            <div class="container">
+                <h2>subcribe to our <br> newsletter.</h2>
+                <form>
+                    <div class="flex gap-5 newsletter-form">
+                        <div class="input-box">
+                            <input type="text" name="username" id="username" placeholder="Enter Your full name here">
+                        </div>
+                        <div class="input-box">
+                            <input type="email" name="email" id="email" placeholder="Enter Your email id here">
+                        </div>
+                    </div>
+                    <button id="subcribe-btn">subcribe</button>
+                </form>
+            </div>
+        </section>
+        <!-- newsletter-subscription-section end here -->
+
+        <!-- footer section start here -->
+        <footer>
+            <div class="container">
+                <div class="flex items-start gap-5 justify-between">
+                    <div class="logo">
+                        <h2>Logo</h2>
+                    </div>
+                    <div class="important-links">
+                        <h2>important-links</h2>
+                        <a href="">about us</a>
+                        <a href="">contact us</a>
+                        <a href="">privacy policy</a>
+                        <a href="">terms of use</a>
+                        <a href="">refund policy</a>
+                    </div>
+                    <div class="contact-part">
+                        <h2>mail@site.com</h2>
+                        <p>+91 9123456780</p>
+                    </div>
+                    <div class="follow-part">
+                        <h2>follow us</h2>
+                        <div class="flex items-center gap-5 justify-between">
+                            <i class="ri-instagram-fill"></i>
+                            <i class="ri-facebook-circle-fill"></i>
+                            <i class="ri-twitter-x-line"></i>
+                            <i class="ri-youtube-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer section end here -->
+    </main>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({
+                publicKey: "ExPnBFMVksHWTsatH",
+            });
+        })();
+    </script>
+    <script src="./assets/js/script.js" defer></script>
+</body>
+
+</html>
