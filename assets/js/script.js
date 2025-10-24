@@ -133,7 +133,7 @@ form.addEventListener("submit", (e) => {
         if (isValid) {
             loadingSms.style.display = "block";
             console.log("isValid", isValid);
-            emailjs.sendForm("service_ooedkzt", "template_d4x447i", form, "ExPnBFMVksHWTsatH").then(() => {
+            emailjs.sendForm("service_qtu59oa", "template_5el6dur", form, "JUB8iHNPHwXkF1FuS").then(() => {
                 loadingSms.style.display = "none";
                 bookSms.textContent = "Email has send successfully..";
                 form.reset();
