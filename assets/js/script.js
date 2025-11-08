@@ -134,7 +134,7 @@ form.addEventListener("submit", (e) => {
         const formData = {
             user_name: userNameValue,
             user_email: userEmailValue,
-            message: `Hello ${userNameValue}, your laundry booking is confirmed! Total amount: ₹${totalPrice.textContent}. We’ll contact you soon.`
+            message: ` Your booking has been received successfully. <b>Total amount:</b> ₹${totalPrice.textContent}. We’ll contact you soon.`
         };
 
         emailjs.send("service_qtu59oa", "template_5el6dur", formData, "JUB8iHNPHwXkF1FuS")
