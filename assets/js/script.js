@@ -98,33 +98,44 @@ form.addEventListener("submit", (e) => {
     let emailVal = userEmail.value.trim();
     let phoneVal = userPhoneNumber.value.trim();
 
-    let userNameErrorSms = document.querySelector("#user-error-sms");
-    let userEmailErrorSms = document.querySelector("#email-error-sms");
-    let userPhoneErrorSms = document.querySelector("#number-error-sms");
-
     let isValid = true;
 
     if (!nameVal) {
-        userNameErrorSms.textContent = "Please enter your name";
+        userName.value = "";
+        userName.classList.add("input-error", "shake");
         isValid = false;
-    } else userNameErrorSms.textContent = "";
+    } else {
+        userName.classList.remove("input-error");
+    }
 
     if (!emailVal) {
-        userEmailErrorSms.textContent = "Please enter your email";
+        userEmail.value = "";
+        userEmail.classList.add("input-error", "shake");
         isValid = false;
-    } else userEmailErrorSms.textContent = "";
+    } else {
+        userEmail.classList.remove("input-error");
+    }
 
     if (!phoneVal) {
-        userPhoneErrorSms.textContent = "Please enter your phone number";
+        userPhoneNumber.value = "";
+        userPhoneNumber.classList.add("input-error", "shake");
         isValid = false;
-    } else userPhoneErrorSms.textContent = "";
+    } else {
+        userPhoneNumber.classList.remove("input-error");
+    }
 
     if (cart.length === 0) {
-        errorProductSms.textContent = "Please add at least one service";
         isValid = false;
-    } else errorProductSms.textContent = "";
+    }
+
+    setTimeout(() => {
+        document.querySelectorAll(".shake").forEach(el => {
+            el.classList.remove("shake");
+        });
+    }, 300);
 
     if (!isValid) return;
+
 
     loadingSms.style.display = "block";
 

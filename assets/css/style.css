@@ -15,20 +15,31 @@
     --text-bg-color: #1da2f5;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
+html,
 body {
     width: 100%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
-.error {
-    color: red;
-    margin-top: 20px;
-    text-transform: capitalize;
+
+.input-error {
+    border: 2px solid red !important;
 }
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
+}
+
+.shake {
+    animation: shake 0.3s;
+}
+
+
 
 
 .container {

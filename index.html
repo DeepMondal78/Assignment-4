@@ -36,7 +36,7 @@
                 </div>
             </nav>
         </header>
-        <!-- hearder section end here -->
+
 
         <!-- hero  section start here -->
         <section id="home" class="hero-section container">
@@ -52,9 +52,10 @@
                     and rediscover the freshness of your colthes todady!
                 </p>
                 <div class="mt-5">
-                    <a href="#serives" class="book-btn">
-                        BOOK a Serives Today
+                    <a href="#services" class="book-btn" id="book-service-btn">
+                        Book A Services Today
                     </a>
+
                 </div>
             </div>
             <div class="hero-right-part">
@@ -62,7 +63,7 @@
                     alt="washing-machine">
             </div>
         </section>
-        <!-- hero  section end here -->
+
         <!-- our achievements section start here -->
         <section id="about" class="achievements-section">
             <div class="container">
@@ -86,7 +87,7 @@
                 </div>
             </div>
         </section>
-        
+
 
         <!-- our serives section start here -->
         <section id="services" class="serives-section">
@@ -126,14 +127,16 @@
                             <h2>book now</h2>
                             <div class="input-box">
                                 <label for="">Full Name</label>
-                                <input type="text" name="user_name" id="username" placeholder="Enter Your user name here">
+                                <input type="text" name="user_name" id="username"
+                                    placeholder="Enter Your user name here">
                                 <span class="error" id="user-error-sms"></span>
                             </div>
                             <div class="flex gap-5">
                                 <div class="input-box">
                                     <label for="">Email id</label>
-                                    <!-- <input type="email" name="to_email" id="email" placeholder="Enter Your email id here"> -->
-                                    <input type="email" name="user_email" id="email" placeholder="Enter Your email id here">
+
+                                    <input type="email" name="user_email" id="email"
+                                        placeholder="Enter Your email id here">
 
                                     <span class="error" id="email-error-sms"></span>
                                 </div>
@@ -153,9 +156,7 @@
             </div>
 
         </section>
-        <!-- our serives section end here -->
 
-        <!-- quality description section start here -->
         <section class="quality-description-section">
             <div class="container">
                 <div class="flex items-center gap-5 justify-between">
@@ -187,26 +188,19 @@
                 </div>
             </div>
         </section>
-        <!-- quality description section end here -->
 
-        <!-- newsletter-subscription-section start here -->
         <section id="contact" class="newsletter-subscription-section">
             <div class="container">
                 <h2>subcribe to our <br> newsletter.</h2>
                 <form>
                     <div class="flex gap-5 newsletter-form">
-                        <div class="input-box">
-                            <input type="text" name="username" id="username" placeholder="Enter Your full name here">
-                        </div>
-                        <div class="input-box">
-                            <input type="email" name="email" id="email" placeholder="Enter Your email id here">
-                        </div>
+                        <input type="text" id="newsletter-username" placeholder="Enter Your full name here">
+                        <input type="email" id="newsletter-email" placeholder="Enter Your email id here">
                     </div>
                     <button id="subcribe-btn">subcribe</button>
                 </form>
             </div>
         </section>
-        <!-- newsletter-subscription-section end here -->
 
         <!-- footer section start here -->
         <footer>
