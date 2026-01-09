@@ -28,19 +28,30 @@ body {
 }
 
 @keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-4px); }
-    50% { transform: translateX(4px); }
-    75% { transform: translateX(-4px); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-4px);
+    }
+
+    50% {
+        transform: translateX(4px);
+    }
+
+    75% {
+        transform: translateX(-4px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .shake {
     animation: shake 0.3s;
 }
-
-
-
 
 .container {
     max-width: 1320px;
@@ -484,7 +495,7 @@ footer {
     margin-top: 20px;
 }
 
-/* table style  */
+
 table {
     margin-top: 20px;
     width: 100%;

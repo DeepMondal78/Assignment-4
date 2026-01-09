@@ -1,4 +1,3 @@
-
 let togglebtn = document.querySelector("#toggle-btn");
 let navbar = document.querySelector(".nav-center");
 
@@ -148,22 +147,19 @@ form.addEventListener("submit", (e) => {
         user_email: emailVal,
         user_phone: phoneVal,
         message: `
-Customer Name: ${nameVal}
-Email: ${emailVal}
-Phone: ${phoneVal}
-
-Order Details:
-${orderDetails}
-
-Total Amount: ₹${totalPrice.textContent}
-        `
+        Customer Name: ${nameVal}
+        Email: ${emailVal}
+        Phone: ${phoneVal}
+        Order Details:
+        ${orderDetails}
+        Total Amount: ₹${totalPrice.textContent}`
     };
 
     emailjs
         .send("service_qtu59oa", "template_5el6dur", formData, "JUB8iHNPHwXkF1FuS")
         .then(() => {
             loadingSms.style.display = "none";
-            bookSms.textContent = "Booking successful! Email sent ✓";
+            bookSms.textContent = "Booking successful...! Mail sent ✓";
 
             form.reset();
             cart = [];
