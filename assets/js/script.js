@@ -1,7 +1,6 @@
-let togglebtn = document.querySelector("#toggle-btn");
-let navbar = document.querySelector(".nav-center");
-
-togglebtn.addEventListener("click", () => {
+let menuBtn = document.querySelector("#menuicon");
+let navbar = document.querySelector(".navbar");
+menuBtn.addEventListener("click", () => {
     navbar.classList.toggle("active-navbar");
 });
 
@@ -159,7 +158,7 @@ form.addEventListener("submit", (e) => {
         .send("service_qtu59oa", "template_5el6dur", formData, "JUB8iHNPHwXkF1FuS")
         .then(() => {
             loadingSms.style.display = "none";
-            bookSms.textContent = "Booking successful...! Mail sent ✓";
+            bookSms.textContent = "Booking successful...! Email sent ✓";
 
             form.reset();
             cart = [];
@@ -174,6 +173,6 @@ form.addEventListener("submit", (e) => {
         })
         .catch(() => {
             loadingSms.style.display = "none";
-            bookSms.textContent = "Something went wrong. Try again ✕";
+            bookSms.textContent = "Something went wrong. Please try again later.";
         });
 });

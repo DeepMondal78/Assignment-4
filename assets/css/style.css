@@ -60,7 +60,7 @@ body {
 
 header {
     width: 100%;
-    padding: 30px;
+    padding: 20px;
     background: white;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
     position: fixed;
@@ -78,7 +78,7 @@ nav .logo {
     text-transform: capitalize;
 }
 
-header .nav-center ul {
+header .navbar ul {
     list-style: none;
     display: flex;
     align-items: center;
@@ -86,11 +86,11 @@ header .nav-center ul {
     gap: 1.5rem;
 }
 
-header .nav-center ul li {
+header .navbar ul li {
     cursor: pointer;
 }
 
-header .nav-center ul li a {
+header .navbar ul li a {
     position: relative;
     text-decoration: none;
     text-transform: capitalize;
@@ -98,7 +98,7 @@ header .nav-center ul li a {
     font-size: 1rem;
 }
 
-header .nav-center ul li a::after {
+header .navbar ul li a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -111,11 +111,17 @@ header .nav-center ul li a::after {
     transition: transform 0.4s ease;
 }
 
-header .nav-center ul li a:hover::after {
+header .navbar ul li a:hover::after {
     transform: scaleY(1);
 }
 
-.btn {
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.usernameBtn {
     padding: 15px 25px;
     border-radius: 9px;
     border: none;
@@ -131,6 +137,8 @@ header .nav-center ul li a:hover::after {
     justify-content: space-between;
     padding: 100px;
     gap: 7rem;
+    max-width: 1320px;
+    margin: auto;
 }
 
 .hero-section .hero-left-part {
@@ -144,7 +152,7 @@ header .nav-center ul li a:hover::after {
     text-transform: capitalize;
 }
 
-.hero-left-part .heading .heading-span-text {
+.hero-left-part .heading .heroHeading {
     color: var(--bg-primary-color);
 }
 
@@ -166,15 +174,15 @@ header .nav-center ul li a:hover::after {
     text-decoration: none;
 }
 
-.mt-5 {
+.bookBtn {
     margin-top: 20px;
 }
 
-.hero-section .hero-right-part {
+.hero-section .hero-right {
     width: 50%;
 }
 
-.hero-right-part img {
+.hero-right img {
     width: 100%;
     max-width: 400px;
     object-fit: cover;
@@ -449,7 +457,7 @@ footer {
     cursor: pointer;
 }
 
-#toggle-btn {
+#menuicon {
     display: none;
     font-size: 20px;
     cursor: pointer;
@@ -544,11 +552,11 @@ th {
         flex-wrap: wrap;
     }
 
-    #toggle-btn {
+    #menuicon {
         display: block;
     }
 
-    .nav-center {
+    .navbar {
         position: absolute;
         width: 80%;
         height: 100vh;
@@ -558,11 +566,11 @@ th {
         transition: all 0.7s;
     }
 
-    .nav-center ul {
+    .navbar ul {
         flex-direction: column;
     }
 
-    .nav-center ul li a {
+    .navbar ul li a {
         font-size: 20px;
         gap: 30%;
     }
