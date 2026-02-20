@@ -158,7 +158,7 @@ form.addEventListener("submit", (e) => {
         .send("service_qtu59oa", "template_5el6dur", formData, "JUB8iHNPHwXkF1FuS")
         .then(() => {
             loadingSms.style.display = "none";
-            bookSms.textContent = "Booking successful...! Email sent ✓";
+            bookSms.textContent = "Email sent successfully! We will contact you soon.";
 
             form.reset();
             cart = [];
