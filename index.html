@@ -14,32 +14,35 @@
 
 <body>
     <main>
+        <!-- hearder section start here -->
         <header>
             <nav class="container">
                 <div class="logo">
                     <h1>logo</h1>
                 </div>
-                <div class="navbar">
+                <div class="nav-center">
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">serives</a></li>
-                        <li><a href="#about">about us</a></li>
-                        <li><a href="#contact">contact us</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">serives</a></li>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">contact us</a></li>
                     </ul>
                 </div>
-                <div class="nav-right">
-                    <button class="usernameBtn">
-                        User name
+                <div class="nav-right flex items-center gap-5">
+                    <button class="btn">
+                        user name
                     </button>
-                    <i id="menuicon" class="ri-menu-2-fill"></i>
+                    <i id="toggle-btn" class="ri-menu-2-fill"></i>
                 </div>
             </nav>
         </header>
+        <!-- hearder section end here -->
 
-        <section id="home" class="hero-section">
+        <!-- hero  section start here -->
+        <section class="hero-section container">
             <div class="hero-left-part">
                 <h1 class="heading">
-                    revitalize your clothes with expert <span class="heroHeading">
+                    revitalize your clothes with expert <span class="heading-span-text">
                         laundry sevices!
                     </span>
                 </h1>
@@ -48,20 +51,20 @@
                     pickuup
                     and rediscover the freshness of your colthes todady!
                 </p>
-                <div class="bookBtn">
-                    <a href="#services" class="book-btn" id="book-service-btn">
-                        Book A Services Today
+                <div class="mt-5">
+                    <a href="#serives" class="book-btn">
+                        BOOK a Serives Today
                     </a>
-
                 </div>
             </div>
-            <div class="hero-right">
+            <div class="hero-right-part">
                 <img class="hero-img" src="https://laundry-wallah-assignment.vercel.app/washing-machine.webp"
                     alt="washing-machine">
             </div>
         </section>
-
-        <section id="about" class="achievements-section">
+        <!-- hero  section end here -->
+        <!-- our achievements section start here -->
+        <section class="achievements-section">
             <div class="container">
                 <div class="flex-box">
                     <div>
@@ -83,8 +86,10 @@
                 </div>
             </div>
         </section>
+        <!-- our achievements section end here -->
 
-        <section id="services" class="serives-section">
+        <!-- our serives section start here -->
+        <section id="serives" class="serives-section">
             <div class="container flex items-start  justify-center gap-5">
                 <div class="serives-card">
                     <div class="serives-part">
@@ -120,21 +125,25 @@
                         <form id="book-form">
                             <h2>book now</h2>
                             <div class="input-box">
-                                <label>Full Name</label>
-                                <input type="text" id="username" placeholder="Enter your name">
+                                <label for="">Full Name</label>
+                                <input type="text" name="name" id="username"
+                                    placeholder="Enter Your user name here">
+                                <span class="error" id="user-error-sms"></span>
                             </div>
                             <div class="flex gap-5">
                                 <div class="input-box">
-                                    <label>Email id</label>
-                                    <input type="email" id="email" placeholder="Enter your email">
+                                    <label for="">Email id</label>
+                                    <input type="email" name="email" id="email" placeholder="Enter Your email id here">
+                                    <span class="error" id="email-error-sms"></span>
                                 </div>
                                 <div class="input-box">
-                                    <label>Phone Number</label>
-                                    <input type="number" id="number" placeholder="Enter your number">
+                                    <label for="">Phone Number</label>
+                                    <input type="number" name="number" id="number" placeholder="Enter Your number here">
+                                    <span class="error" id="number-error-sms"></span>
                                 </div>
                             </div>
                             <button id="book-btn">book now</button>
-                            <p id="loading-sms">please wait...sending...</p>
+                            <p id="loading-sms">plase wait... sending....</p>
                         </form>
                         <p id="book-sms"></p>
                         <p id="error-product"></p>
@@ -143,7 +152,9 @@
             </div>
 
         </section>
+        <!-- our serives section end here -->
 
+        <!-- quality description section start here -->
         <section class="quality-description-section">
             <div class="container">
                 <div class="flex items-center gap-5 justify-between">
@@ -175,20 +186,28 @@
                 </div>
             </div>
         </section>
+        <!-- quality description section end here -->
 
-        <section id="contact" class="newsletter-subscription-section">
+        <!-- newsletter-subscription-section start here -->
+        <section class="newsletter-subscription-section">
             <div class="container">
                 <h2>subcribe to our <br> newsletter.</h2>
                 <form>
                     <div class="flex gap-5 newsletter-form">
-                        <input type="text" id="newsletter-username" placeholder="Enter Your full name here">
-                        <input type="email" id="newsletter-email" placeholder="Enter Your email id here">
+                        <div class="input-box">
+                            <input type="text" name="username" id="username" placeholder="Enter Your full name here">
+                        </div>
+                        <div class="input-box">
+                            <input type="email" name="email" id="email" placeholder="Enter Your email id here">
+                        </div>
                     </div>
                     <button id="subcribe-btn">subcribe</button>
                 </form>
             </div>
         </section>
+        <!-- newsletter-subscription-section end here -->
 
+        <!-- footer section start here -->
         <footer>
             <div class="container">
                 <div class="flex items-start gap-5 justify-between">
@@ -219,14 +238,14 @@
                 </div>
             </div>
         </footer>
-
+        <!-- footer section end here -->
     </main>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
     <script type="text/javascript">
         (function () {
             emailjs.init({
-                publicKey: "ExPnBFMVksHWTsatH",
+                publicKey: "JUB8iHNPHwXkF1FuS",
             });
         })();
     </script>

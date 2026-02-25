@@ -1,61 +1,77 @@
-let menuBtn = document.querySelector("#menuicon");
-let navbar = document.querySelector(".navbar");
-menuBtn.addEventListener("click", () => {
+// ================= MOBILE NAV TOGGLE =================
+const toggleBtn = document.querySelector("#toggle-btn");
+const navbar = document.querySelector(".nav-center");
+
+toggleBtn.addEventListener("click", () => {
     navbar.classList.toggle("active-navbar");
 });
 
-let itemList = document.querySelector(".item-list");
-let totalPrice = document.querySelector("#total-price");
-let cardList = document.querySelector(".card-list");
-let noCartItems = document.querySelector(".no-cart-items");
-
-let cart = [];
+// ================= SERVICES DATA =================
 const services = [
     { name: "Dry Cleaning", price: 200 },
     { name: "Wash & Fold", price: 100 },
     { name: "Ironing", price: 300 },
     { name: "Stain Removal", price: 500 },
     { name: "Leather & Suede Cleaning", price: 999 },
-    { name: "Wedding Dress Cleaning", price: 2800 }
+    { name: "Wedding Dress Cleaning", price: 2800 },
 ];
 
-let serviceHTML = "";
-services.forEach((item, index) => {
-    serviceHTML += `
-        <div class="service">
-            <div class="d-flex">
-                <p>${item.name}</p>
-                <p>₹${item.price}</p>
-            </div>
-            <button class="add-btn" data-added="false" onclick="addToCart(${index})">
-                Add Item <i class="ri-shopping-cart-2-line"></i>
-            </button>
+const itemList = document.querySelector(".item-list");
+const cardList = document.querySelector(".card-list");
+const totalPrice = document.querySelector("#total-price");
+const noCartItems = document.querySelector(".no-cart-items");
+
+let cart = [];
+
+// ================= RENDER SERVICES =================
+function renderServices() {
+    let html = "";
+
+    services.forEach((service, index) => {
+        html += `
+      <div class="service">
+        <div class="d-flex">
+          <p>${service.name}</p>
+          <p>₹${service.price}</p>
         </div>
+        <button class="add-btn" data-index="${index}" data-added="false">
+          Add Item <i class="ri-shopping-cart-2-line"></i>
+        </button>
+      </div>
     `;
-});
-itemList.innerHTML = serviceHTML;
+    });
 
-function addToCart(index) {
-    let buttons = document.querySelectorAll(".add-btn");
-    let currentBtn = buttons[index];
+    itemList.innerHTML = html;
+}
 
-    if (currentBtn.dataset.added === "false") {
-        cart.push(services[index]);
-        currentBtn.dataset.added = "true";
-        currentBtn.style.backgroundColor = "#fab1a4";
-        currentBtn.style.color = "#ec3d1e";
-        currentBtn.innerHTML = `Remove Item <i class="ri-delete-bin-5-line"></i>`;
+renderServices();
+
+// ================= ADD TO CART =================
+itemList.addEventListener("click", (e) => {
+    if (!e.target.closest(".add-btn")) return;
+
+    const btn = e.target.closest(".add-btn");
+    const index = btn.dataset.index;
+    const service = services[index];
+
+    if (btn.dataset.added === "false") {
+        cart.push(service);
+        btn.dataset.added = "true";
+        btn.innerHTML = `Remove Item <i class="ri-delete-bin-5-line"></i>`;
+        btn.style.backgroundColor = "#fab1a4";
+        btn.style.color = "#ec3d1e";
     } else {
-        cart = cart.filter(item => item.name !== services[index].name);
-        currentBtn.dataset.added = "false";
-        currentBtn.style.backgroundColor = "#c4e4f8";
-        currentBtn.style.color = "var(--text-bg-color)";
-        currentBtn.innerHTML = `Add Item <i class="ri-shopping-cart-2-line"></i>`;
+        cart = cart.filter((item) => item.name !== service.name);
+        btn.dataset.added = "false";
+        btn.innerHTML = `Add Item <i class="ri-shopping-cart-2-line"></i>`;
+        btn.style.backgroundColor = "#c4e4f8";
+        btn.style.color = "var(--text-bg-color)";
     }
 
     updateCart();
-}
+});
 
+// ================= UPDATE CART =================
 function updateCart() {
     let total = 0;
     let rows = "";
@@ -64,15 +80,16 @@ function updateCart() {
         noCartItems.style.display = "flex";
     } else {
         noCartItems.style.display = "none";
+
         cart.forEach((item, index) => {
             total += item.price;
             rows += `
-                <tr>
-                    <td>${index + 1}</td>
-                    <td>${item.name}</td>
-                    <td>₹${item.price}</td>
-                </tr>
-            `;
+        <tr>
+          <td>${index + 1}</td>
+          <td>${item.name}</td>
+          <td>₹${item.price}</td>
+        </tr>
+      `;
         });
     }
 
@@ -80,99 +97,103 @@ function updateCart() {
     totalPrice.textContent = total;
 }
 
-let form = document.querySelector("#book-form");
-let userName = document.querySelector("#username");
-let userEmail = document.querySelector("#email");
-let userPhoneNumber = document.querySelector("#number");
+// ================= FORM SUBMIT =================
+const form = document.querySelector("#book-form");
+const loadingSms = document.querySelector("#loading-sms");
+const bookSms = document.querySelector("#book-sms");
+const errorProductSms = document.querySelector("#error-product");
 
-let loadingSms = document.querySelector("#loading-sms");
-let bookSms = document.querySelector("#book-sms");
-let errorProductSms = document.querySelector("#error-product");
-
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    let nameVal = userName.value.trim();
-    let emailVal = userEmail.value.trim();
-    let phoneVal = userPhoneNumber.value.trim();
+    const name = document.querySelector("#username").value.trim();
+    const email = document.querySelector("#email").value.trim();
+    const phone = document.querySelector("#number").value.trim();
 
     let isValid = true;
 
-    if (!nameVal) {
-        userName.value = "";
-        userName.classList.add("input-error", "shake");
+    // name validation
+    if (!name) {
+        document.querySelector("#user-error-sms").textContent =
+            "please enter name";
         isValid = false;
     } else {
-        userName.classList.remove("input-error");
+        document.querySelector("#user-error-sms").textContent = "";
     }
 
-    if (!emailVal) {
-        userEmail.value = "";
-        userEmail.classList.add("input-error", "shake");
+    // email validation
+    if (!email) {
+        document.querySelector("#email-error-sms").textContent =
+            "please enter email";
         isValid = false;
     } else {
-        userEmail.classList.remove("input-error");
+        document.querySelector("#email-error-sms").textContent = "";
     }
 
-    if (!phoneVal) {
-        userPhoneNumber.value = "";
-        userPhoneNumber.classList.add("input-error", "shake");
+    // phone validation
+    if (!phone) {
+        document.querySelector("#number-error-sms").textContent =
+            "please enter phone";
         isValid = false;
     } else {
-        userPhoneNumber.classList.remove("input-error");
+        document.querySelector("#number-error-sms").textContent = "";
     }
 
+    // cart check
     if (cart.length === 0) {
+        errorProductSms.textContent = "Please add at least one service.";
         isValid = false;
+    } else {
+        errorProductSms.textContent = "";
     }
-
-    setTimeout(() => {
-        document.querySelectorAll(".shake").forEach(el => {
-            el.classList.remove("shake");
-        });
-    }, 300);
 
     if (!isValid) return;
 
-
     loadingSms.style.display = "block";
+    bookSms.textContent = "";
 
-    let orderDetails = cart
+    const orderDetails = cart
         .map((item, i) => `${i + 1}. ${item.name} - ₹${item.price}`)
         .join("\n");
 
-    const formData = {
-        user_name: nameVal,
-        user_email: emailVal,
-        user_phone: phoneVal,
+    const templateParams = {
+        user_name: name,
+        user_email: email,
+        user_phone: phone,
         message: `
-        Customer Name: ${nameVal}
-        Email: ${emailVal}
-        Phone: ${phoneVal}
-        Order Details:
+        Customer Name: ${name}
+        Email: ${email}
+        Phone: ${phone}
+
+        Order:
         ${orderDetails}
-        Total Amount: ₹${totalPrice.textContent}`
+
+        Total: ₹${totalPrice.textContent}
+    `,
     };
 
     emailjs
-        .send("service_qtu59oa", "template_5el6dur", formData, "JUB8iHNPHwXkF1FuS")
+        .send("service_qtu59oa", "template_5el6dur", templateParams)
         .then(() => {
             loadingSms.style.display = "none";
-            bookSms.textContent = "Email sent successfully! We will contact you soon.";
+            bookSms.textContent = "Booking sent successfully!";
+            bookSms.style.color = "green";
 
             form.reset();
             cart = [];
             updateCart();
 
-            document.querySelectorAll(".add-btn").forEach(btn => {
+            document.querySelectorAll(".add-btn").forEach((btn) => {
                 btn.dataset.added = "false";
+                btn.innerHTML = `Add Item <i class="ri-shopping-cart-2-line"></i>`;
                 btn.style.backgroundColor = "#c4e4f8";
                 btn.style.color = "var(--text-bg-color)";
-                btn.innerHTML = `Add Item <i class="ri-shopping-cart-2-line"></i>`;
             });
         })
-        .catch(() => {
+        .catch((error) => {
             loadingSms.style.display = "none";
-            bookSms.textContent = "Something went wrong. Please try again later.";
+            bookSms.textContent = "Mail failed. Check console.";
+            bookSms.style.color = "red";
+            console.log("EMAIL ERROR:", error);
         });
 });
